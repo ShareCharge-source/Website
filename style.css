@@ -1,0 +1,24 @@
+/* ===== BASE =====
+   Variabelen, reset, body, basis-typografie */
+
+:root {
+    --green-main: #275236;
+    --green-dark: #1a3a25;
+    --green-light: #3a7a4c;
+    --cream: #f8f7f4;
+    --cream-dark: #f0efe8;
+    --white: #ffffff;
+    --text-dark: #1a1a1a;
+    --text-muted: #5a5a5a;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: 'Outfit', sans-serif;
+    background: var(--cream);
+    color: var(--text-dark);
+    line-height: 1.6;
+    overflow-x: hidden;
+}

@@ -1,0 +1,38 @@
+/* ===== NAVIGATION =====
+   Navigatiebalk */
+
+/* Navigation */
+nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    padding: 1rem 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(180deg, var(--green-dark) 0%, var(--green-main) 50%, var(--green-light) 100%);
+    transition: all 0.3s ease;
+}
+nav.scrolled {
+    padding: 0.5rem 5%;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
+.nav-logo { display: flex; align-items: center; text-decoration: none; }
+.nav-logo img { height: 250px; margin: -80px 0; transition: height 0.3s, margin 0.3s; }
+nav.scrolled .nav-logo img { height: 80px; margin: -10px 0; }
+.nav-links { display: flex; align-items: center; gap: 2.5rem; }
+.nav-links a { 
+    font-weight: 500; 
+    color: white; 
+    text-decoration: none; 
+    transition: opacity 0.3s;
+}
+.nav-links a:hover { opacity: 0.8; }
+.nav-cta {
+    background: white !important;
+    color: var(--green-main) !important;
+    padding: 0.6rem 1.5rem !important;
+    border-radius: 50px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.nav-cta:hover { transform: translateY(-2px); box-shadow: 0 5px 20px rgba(0,0,0,0.2); opacity: 1 !important; }

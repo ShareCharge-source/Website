@@ -1,0 +1,282 @@
+/* ===== IPHONE =====
+   iPhone-mockup (frame, notch, scherm, knoppen) */
+
+/* iPhone Section */
+.iphone-section {
+    background: linear-gradient(180deg, var(--green-main) 0%, var(--cream) 60%);
+    padding: 5rem 5% 8rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.iphone-title {
+    text-align: center;
+    color: white;
+    margin-bottom: 3rem;
+}
+
+.iphone-title h2 {
+    font-size: 2.25rem;
+    font-weight: 500;
+    margin-bottom: 0.75rem;
+}
+
+.iphone-title p {
+    font-size: 1.1rem;
+    opacity: 0.85;
+}
+
+.iphone-wrapper {
+    perspective: 1200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.iphone-device {
+    position: relative;
+    width: 300px;
+    height: 620px;
+    background: linear-gradient(145deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
+    border-radius: 55px;
+    padding: 10px;
+    box-shadow: 
+        0 60px 100px rgba(0,0,0,0.5),
+        0 20px 40px rgba(0,0,0,0.35),
+        inset 0 0 0 1px rgba(255,255,255,0.1),
+        inset 0 1px 2px rgba(255,255,255,0.15),
+        inset 0 -1px 2px rgba(0,0,0,0.3);
+    transform: rotateY(-12deg) rotateX(2deg);
+    transform-style: preserve-3d;
+    transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.6s ease;
+}
+
+/* Titanium frame effect */
+.iphone-device::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 55px;
+    padding: 2px;
+    background: linear-gradient(145deg, rgba(255,255,255,0.2) 0%, transparent 40%, transparent 60%, rgba(0,0,0,0.3) 100%);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+}
+
+/* Side button - power */
+.iphone-device::after {
+    content: '';
+    position: absolute;
+    right: -3px;
+    top: 120px;
+    width: 4px;
+    height: 70px;
+    background: linear-gradient(90deg, #3a3a3a 0%, #2a2a2a 50%, #1a1a1a 100%);
+    border-radius: 0 3px 3px 0;
+    box-shadow: 1px 0 2px rgba(0,0,0,0.3);
+}
+
+.iphone-device:hover {
+    transform: rotateY(-6deg) rotateX(1deg) translateY(-10px) scale(1.02);
+    box-shadow: 
+        0 80px 120px rgba(0,0,0,0.55),
+        0 30px 50px rgba(0,0,0,0.4),
+        inset 0 0 0 1px rgba(255,255,255,0.15),
+        inset 0 1px 2px rgba(255,255,255,0.2);
+}
+
+/* Dynamic Island */
+.iphone-notch {
+    position: absolute;
+    top: 18px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 35px;
+    background: #000;
+    border-radius: 20px;
+    z-index: 10;
+    box-shadow: 
+        inset 0 0 5px rgba(0,0,0,0.8),
+        0 1px 2px rgba(0,0,0,0.5);
+}
+
+/* Camera lens in Dynamic Island */
+.iphone-notch::before {
+    content: '';
+    position: absolute;
+    right: 25px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 12px;
+    height: 12px;
+    background: radial-gradient(circle at 30% 30%, #2a2a4a 0%, #1a1a2a 50%, #0a0a1a 100%);
+    border-radius: 50%;
+    box-shadow: 
+        inset 0 0 3px rgba(255,255,255,0.1),
+        0 0 0 2px #0a0a0a;
+}
+
+/* Subtle lens reflection */
+.iphone-notch::after {
+    content: '';
+    position: absolute;
+    right: 27px;
+    top: 45%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 4px;
+    background: rgba(255,255,255,0.3);
+    border-radius: 50%;
+    filter: blur(0.5px);
+}
+
+.iphone-screen {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    border-radius: 47px;
+    overflow: hidden;
+    box-shadow: inset 0 0 0 1px rgba(0,0,0,0.9);
+}
+
+/* Glass reflection - diagonal light streak */
+.iphone-screen::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        115deg,
+        transparent 0%,
+        transparent 40%,
+        rgba(255,255,255,0.08) 42%,
+        rgba(255,255,255,0.15) 44%,
+        rgba(255,255,255,0.08) 46%,
+        transparent 48%,
+        transparent 100%
+    );
+    pointer-events: none;
+    z-index: 6;
+    animation: glassShine 8s ease-in-out infinite;
+}
+
+/* Subtle top reflection for depth */
+.iphone-screen::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        linear-gradient(180deg, rgba(255,255,255,0.06) 0%, transparent 15%),
+        linear-gradient(160deg, rgba(255,255,255,0.04) 0%, transparent 30%),
+        radial-gradient(ellipse at 30% 0%, rgba(255,255,255,0.08) 0%, transparent 50%);
+    pointer-events: none;
+    border-radius: 47px;
+    z-index: 5;
+}
+
+@keyframes glassShine {
+    0%, 100% { transform: translateX(-20%) rotate(0deg); opacity: 0.6; }
+    50% { transform: translateX(10%) rotate(0deg); opacity: 1; }
+}
+
+/* Glass edge highlight */
+.iphone-screen-glass {
+    position: absolute;
+    inset: 0;
+    border-radius: 47px;
+    box-shadow: 
+        inset 0 1px 1px rgba(255,255,255,0.1),
+        inset 0 -1px 1px rgba(0,0,0,0.2),
+        inset 1px 0 1px rgba(255,255,255,0.05),
+        inset -1px 0 1px rgba(0,0,0,0.1);
+    pointer-events: none;
+    z-index: 7;
+}
+
+.app-screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transform: scale(1.05);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.app-screen.active {
+    opacity: 1;
+    transform: scale(1);
+}
+
+
+/* Volume and silent buttons */
+.iphone-buttons {
+    position: absolute;
+    left: -3px;
+    top: 100px;
+}
+.iphone-buttons .btn-silent {
+    position: absolute;
+    top: 0;
+    width: 4px;
+    height: 30px;
+    background: linear-gradient(270deg, #3a3a3a 0%, #2a2a2a 50%, #1a1a1a 100%);
+    border-radius: 3px 0 0 3px;
+    box-shadow: -1px 0 2px rgba(0,0,0,0.3);
+}
+.iphone-buttons .btn-vol-up {
+    position: absolute;
+    top: 50px;
+    width: 4px;
+    height: 55px;
+    background: linear-gradient(270deg, #3a3a3a 0%, #2a2a2a 50%, #1a1a1a 100%);
+    border-radius: 3px 0 0 3px;
+    box-shadow: -1px 0 2px rgba(0,0,0,0.3);
+}
+.iphone-buttons .btn-vol-down {
+    position: absolute;
+    top: 115px;
+    width: 4px;
+    height: 55px;
+    background: linear-gradient(270deg, #3a3a3a 0%, #2a2a2a 50%, #1a1a1a 100%);
+    border-radius: 3px 0 0 3px;
+    box-shadow: -1px 0 2px rgba(0,0,0,0.3);
+}
+
+.iphone-dots {
+    display: flex;
+    gap: 14px;
+    margin-top: 35px;
+}
+
+.iphone-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: linear-gradient(180deg, var(--green-dark) 0%, var(--green-main) 50%, var(--green-light) 100%);
+    opacity: 0.35;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.iphone-dot.active {
+    opacity: 1;
+    transform: scale(1.35);
+}
+
+.iphone-dot:hover {
+    opacity: 0.7;
+}

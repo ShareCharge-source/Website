@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juridische documenten | ShareCharge</title>
+    <meta name="description" content="Privacybeleid, algemene voorwaarden, gebruikers- en aanbiedersvoorwaarden en cookiebeleid van ShareCharge.">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --green-main: #275236;
+            --green-dark: #1a3a25;
+            --green-light: #3a7a4c;
+            --cream: #f8f7f4;
+            --cream-dark: #f0efe8;
+            --white: #ffffff;
+            --text-dark: #1a1a1a;
+            --text-muted: #5a5a5a;
+            --border: #e2e6dc;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--cream);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Topbalk met logo + home-knop */
+        .legal-nav {
+            position: sticky; top: 0; z-index: 100;
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 1rem 5%;
+            background: var(--green-main);
+            box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+        }
+        .legal-nav .logo img { height: 38px; display: block; }
+        .home-btn {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            padding: 0.6rem 1.3rem;
+            background: var(--white); color: var(--green-main);
+            border-radius: 999px; text-decoration: none;
+            font-weight: 600; font-size: 0.95rem;
+            transition: all 0.25s ease;
+        }
+        .home-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0,0,0,0.2); }
+        .home-btn svg { width: 18px; height: 18px; }
+
+        /* Header */
+        .legal-header {
+            background: linear-gradient(160deg, var(--green-dark) 0%, var(--green-main) 100%);
+            color: var(--white);
+            padding: 3rem 5% 2.5rem;
+            text-align: center;
+        }
+        .legal-header h1 { font-size: 2rem; font-weight: 600; margin-bottom: 0.6rem; }
+        .legal-header p { opacity: 0.85; max-width: 600px; margin: 0 auto; }
+
+        /* Inhoudsopgave */
+        .legal-toc {
+            max-width: 900px; margin: -1.5rem auto 0; padding: 0 5%;
+            position: relative; z-index: 2;
+        }
+        .legal-toc-inner {
+            background: var(--white);
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            padding: 1.5rem;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 0.75rem;
+        }
+        .legal-toc a {
+            display: flex; align-items: center; gap: 0.6rem;
+            padding: 0.8rem 1rem;
+            background: var(--cream);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            text-decoration: none; color: var(--green-main);
+            font-weight: 500; font-size: 0.92rem;
+            transition: all 0.2s ease;
+        }
+        .legal-toc a:hover { border-color: var(--green-main); background: var(--white); transform: translateY(-2px); }
+
+        /* Document-secties */
+        .legal-main { max-width: 900px; margin: 0 auto; padding: 2.5rem 5% 4rem; }
+        .doc-block {
+            background: var(--white);
+            border-radius: 16px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+            overflow: hidden;
+            scroll-margin-top: 90px;
+        }
+        .doc-head {
+            display: flex; align-items: center; justify-content: space-between;
+            gap: 1rem; flex-wrap: wrap;
+            padding: 1.3rem 1.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .doc-head h2 { font-size: 1.2rem; font-weight: 600; color: var(--green-main); }
+        .download-btn {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            padding: 0.55rem 1.1rem;
+            background: var(--green-main); color: var(--white);
+            border-radius: 999px; text-decoration: none;
+            font-weight: 600; font-size: 0.88rem;
+            transition: all 0.25s ease; white-space: nowrap;
+        }
+        .download-btn:hover { background: var(--green-dark); transform: translateY(-2px); }
+        .download-btn svg { width: 16px; height: 16px; }
+
+        /* PDF-viewer */
+        .doc-viewer {
+            width: 100%; height: 600px; border: none; display: block;
+            background: var(--cream-dark);
+        }
+        .doc-fallback {
+            padding: 1rem 1.5rem; font-size: 0.88rem; color: var(--text-muted);
+            border-top: 1px solid var(--border);
+        }
+        .doc-fallback a { color: var(--green-main); font-weight: 600; }
+
+        footer {
+            background: var(--green-dark); color: rgba(255,255,255,0.8);
+            text-align: center; padding: 2rem 5%; font-size: 0.88rem;
+        }
+        footer a { color: var(--white); }
+
+        @media (max-width: 600px) {
+            .doc-viewer { height: 450px; }
+            .legal-header h1 { font-size: 1.6rem; }
+            .doc-head { flex-direction: column; align-items: flex-start; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="legal-nav">
+        <a href="../index.html" class="logo"><img src="../assets/images/logo.png" alt="ShareCharge"></a>
+        <a href="../index.html" class="home-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 12l9-9 9 9M5 10v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V10"/>
+            </svg>
+            Terug naar home
+        </a>
+    </nav>
+
+    <header class="legal-header">
+        <h1>Juridische documenten</h1>
+        <p>Hier vind je het privacybeleid, de voorwaarden en het cookiebeleid van ShareCharge.
+           Je kunt elk document online bekijken of downloaden als PDF.</p>
+    </header>
+
+    <div class="legal-toc">
+        <div class="legal-toc-inner">
+            <a href="#privacybeleid">Privacybeleid</a>
+            <a href="#algemene-voorwaarden">Algemene voorwaarden</a>
+            <a href="#gebruikersvoorwaarden">Gebruikersvoorwaarden</a>
+            <a href="#aanbiedersvoorwaarden">Aanbiedersvoorwaarden</a>
+            <a href="#cookiebeleid">Cookiebeleid</a>
+        </div>
+    </div>
+
+    <main class="legal-main">
+
+        <section class="doc-block" id="privacybeleid">
+            <div class="doc-head">
+                <h2>Privacybeleid</h2>
+                <a class="download-btn" href="pdf/privacybeleid.pdf" download>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+                    Download PDF
+                </a>
+            </div>
+            <iframe class="doc-viewer" src="pdf/privacybeleid.pdf#view=FitH" title="Privacybeleid ShareCharge"></iframe>
+            <p class="doc-fallback">Wordt de PDF niet weergegeven? <a href="pdf/privacybeleid.pdf" target="_blank" rel="noopener">Open het privacybeleid in een nieuw tabblad</a>.</p>
+        </section>
+
+        <section class="doc-block" id="algemene-voorwaarden">
+            <div class="doc-head">
+                <h2>Algemene voorwaarden</h2>
+                <a class="download-btn" href="pdf/algemene-voorwaarden.pdf" download>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+                    Download PDF
+                </a>
+            </div>
+            <iframe class="doc-viewer" src="pdf/algemene-voorwaarden.pdf#view=FitH" title="Algemene voorwaarden ShareCharge"></iframe>
+            <p class="doc-fallback">Wordt de PDF niet weergegeven? <a href="pdf/algemene-voorwaarden.pdf" target="_blank" rel="noopener">Open de algemene voorwaarden in een nieuw tabblad</a>.</p>
+        </section>
+
+        <section class="doc-block" id="gebruikersvoorwaarden">
+            <div class="doc-head">
+                <h2>Gebruikersvoorwaarden</h2>
+                <a class="download-btn" href="pdf/gebruikersvoorwaarden.pdf" download>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+                    Download PDF
+                </a>
+            </div>
+            <iframe class="doc-viewer" src="pdf/gebruikersvoorwaarden.pdf#view=FitH" title="Gebruikersvoorwaarden ShareCharge"></iframe>
+            <p class="doc-fallback">Wordt de PDF niet weergegeven? <a href="pdf/gebruikersvoorwaarden.pdf" target="_blank" rel="noopener">Open de gebruikersvoorwaarden in een nieuw tabblad</a>.</p>
+        </section>
+
+        <section class="doc-block" id="aanbiedersvoorwaarden">
+            <div class="doc-head">
+                <h2>Aanbiedersvoorwaarden</h2>
+                <a class="download-btn" href="pdf/aanbiedersvoorwaarden.pdf" download>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+                    Download PDF
+                </a>
+            </div>
+            <iframe class="doc-viewer" src="pdf/aanbiedersvoorwaarden.pdf#view=FitH" title="Aanbiedersvoorwaarden ShareCharge"></iframe>
+            <p class="doc-fallback">Wordt de PDF niet weergegeven? <a href="pdf/aanbiedersvoorwaarden.pdf" target="_blank" rel="noopener">Open de aanbiedersvoorwaarden in een nieuw tabblad</a>.</p>
+        </section>
+
+        <section class="doc-block" id="cookiebeleid">
+            <div class="doc-head">
+                <h2>Cookiebeleid</h2>
+                <a class="download-btn" href="pdf/cookiebeleid.pdf" download>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+                    Download PDF
+                </a>
+            </div>
+            <iframe class="doc-viewer" src="pdf/cookiebeleid.pdf#view=FitH" title="Cookiebeleid ShareCharge"></iframe>
+            <p class="doc-fallback">Wordt de PDF niet weergegeven? <a href="pdf/cookiebeleid.pdf" target="_blank" rel="noopener">Open het cookiebeleid in een nieuw tabblad</a>.</p>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 ShareCharge. <a href="../index.html">Terug naar de homepage</a></p>
+    </footer>
+</body>
+</html>
